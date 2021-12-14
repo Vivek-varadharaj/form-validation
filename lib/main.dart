@@ -199,11 +199,16 @@ class _MyAppState extends State<MyApp> {
                   style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
                     setState(() {
-                      user = UserModel(
+                      if(_email!.text!=user!.email || _name!.text!=user!.name || _phone!.text!=user!.mobile){
+                         user = UserModel(
                           email: _email!.text,
                           image: user!.image,
                           mobile: int.parse(_phone!.text),
                           name: _name!.text);
+
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("New data saved")));
+                      }
+                     
                       editStatus = true;
                     });
                   },
