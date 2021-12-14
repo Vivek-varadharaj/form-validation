@@ -32,21 +32,17 @@ class _MyAppState extends State<MyApp> {
       "fName": "demo-man",
       "mob": 9123476833,
       "img":
-          "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9jdXN8ZW58MHx8MHx8&w=1000&q=80"// gave a proper link for image
+          "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9jdXN8ZW58MHx8MHx8&w=1000&q=80" // gave a proper link for image
     }
   };
   @override
   void initState() {
-
     super.initState();
     user = UserModel.fromJson(jsonData["user"]);
     valid = Validate();
     _name = TextEditingController();
     _email = TextEditingController();
     _phone = TextEditingController();
-    _name!.text = user!.name;
-    _email!.text = user!.email;
-    _phone!.text = user!.mobile.toString();
   }
 
   @override
@@ -59,7 +55,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    print(_name!.text);
+    _name!.text = user!.name;
+    _phone!.text = user!.mobile;
+    _email!.text = user!.email;
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
@@ -89,6 +87,7 @@ class _MyAppState extends State<MyApp> {
                       padding: const EdgeInsets.only(
                           top: 18.0, left: 7, right: 8, bottom: 8),
                       child: TextFormField(
+                        controller: _name,
                         decoration: InputDecoration(
                           labelStyle: TextStyle(color: Colors.black),
                           focusedBorder: OutlineInputBorder(
@@ -106,7 +105,6 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ),
                         ),
-                        initialValue: _name!.text,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value == null || value == "") {
@@ -119,6 +117,7 @@ class _MyAppState extends State<MyApp> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        controller: _phone,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
@@ -135,7 +134,6 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ),
                         ),
-                        initialValue: _phone!.text,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value != null) {
@@ -153,6 +151,7 @@ class _MyAppState extends State<MyApp> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        controller: _email,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(25.0),
@@ -169,7 +168,6 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ),
                         ),
-                        initialValue: _email!.text,
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
                           if (value != null) if (!valid!.validateEmail(value)) {
@@ -199,16 +197,20 @@ class _MyAppState extends State<MyApp> {
                   style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
                     setState(() {
-                      if(_email!.text!=user!.email || _name!.text!=user!.name || _phone!.text!=user!.mobile){
-                         user = UserModel(
-                          email: _email!.text,
-                          image: user!.image,
-                          mobile: int.parse(_phone!.text),
-                          name: _name!.text);
+                      if (user!.mobile == _phone!.text &&
+                          user!.name == _name!.text &&
+                          user!.email == _email!.text) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("Data has no change")));
+                      } else {
+                        user!.email = _email!.text;
+                        user!.name = _name!.text;
+                        user!.mobile = _phone!.text;
 
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("New data saved")));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text("New data saved")));
                       }
-                     
+
                       editStatus = true;
                     });
                   },
