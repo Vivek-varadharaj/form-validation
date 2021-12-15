@@ -98,12 +98,16 @@ class _EditScreenState extends State<EditScreen> {
                                 copyPath= (image.path);
                               });
                             },
-                            child: Icon(
-                              FontAwesomeIcons.images,
-                              color: Colors.white.withOpacity(0.5),
-                              size: 80,
-                            )),
-                      ],
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(20)
+                              ),
+                              
+                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                              child: Text("Tap to add Image"),
+                              ),
+                         ) ],
                     ),
                     Padding(
                       padding: const EdgeInsets.only(

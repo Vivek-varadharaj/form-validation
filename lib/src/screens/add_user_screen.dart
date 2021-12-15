@@ -64,7 +64,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
                 child: Column(
                   children: [
                     Stack(
-                      alignment: Alignment.bottomLeft,
+                      alignment: Alignment.bottomCenter,
                       children: [
                         Container(
                             height: 300,
@@ -78,19 +78,24 @@ class _AddUserScreenState extends State<AddUserScreen> {
                                   )
                                 : Image.asset("assets/user.png")),
                         GestureDetector(
-                            onTap: () async {
-                              image = await _picker.pickImage(
-                                  source: ImageSource.gallery);
-                              if (image == null) return null;
-                              setState(() {
-                                _image = File(image.path);
-                              });
-                            },
-                            child: Icon(
-                              FontAwesomeIcons.images,
-                              color: Colors.white.withOpacity(0.5),
-                              size: 80,
-                            )),
+                          onTap: () async {
+                            image = await _picker.pickImage(
+                                source: ImageSource.gallery);
+                            if (image == null) return null;
+                            setState(() {
+                              _image = File(image.path);
+                            });
+                          },
+                          child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withOpacity(0.5),
+                                borderRadius: BorderRadius.circular(20)
+                              ),
+                              
+                              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                              child: Text("Tap to add Image"),
+                              ),
+                        )
                       ],
                     ),
                     Padding(
@@ -219,13 +224,12 @@ class _AddUserScreenState extends State<AddUserScreen> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
-                    print(validateIt.isValidEntirely);
-                    print("no");
+                    
                     if (validateIt.isValidEntirely) {
                       setState(() {
                         UserModel user = UserModel(
                             email: _email!.text,
-                            image: image != null ? image?.path : null,
+                            image: image != null ? image.path : null,
                             mobile: _phone!.text,
                             name: _name!.text);
 
@@ -236,8 +240,10 @@ class _AddUserScreenState extends State<AddUserScreen> {
                         editStatus = true;
                         Navigator.of(context).pop();
                       });
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Every field is mandatory")));
                     }
-                    ;
+                     ;
                   },
                   child: Text("Save"),
                 ),
