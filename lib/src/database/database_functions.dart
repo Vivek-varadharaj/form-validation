@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_parcing/src/database/user_model.dart';
+import 'package:json_parcing/src/models/user_model.dart';
 
 class DatabaseFunctions {
   List<UserModel> newPlaylist = [];

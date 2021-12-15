@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:json_parcing/src/database/database_functions.dart';
-import 'package:json_parcing/src/database/user_model.dart';
+import 'package:json_parcing/src/models/user_model.dart';
 import 'package:json_parcing/src/database/user_model_provider.dart';
 
 import 'package:json_parcing/src/screens/home_screen.dart';

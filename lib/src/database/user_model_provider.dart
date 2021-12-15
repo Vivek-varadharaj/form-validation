@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:json_parcing/src/database/database_functions.dart';
-import 'package:json_parcing/src/database/user_model.dart';
+import 'package:json_parcing/src/models/user_model.dart';
 
 class UserModelProvider with ChangeNotifier{
   DatabaseFunctions db = DatabaseFunctions.getDatabase();

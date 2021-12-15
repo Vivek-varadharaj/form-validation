@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:json_parcing/src/database/user_model.dart';
+import 'package:json_parcing/src/models/user_model.dart';
 import 'package:json_parcing/src/database/user_model_provider.dart';
 
 import 'package:json_parcing/src/validation/validate.dart';
@@ -82,7 +82,7 @@ class _EditScreenState extends State<EditScreen> {
                       children: [
                         Container(
                           height: 300,
-                          width: 400,
+                          width: 300,
                           clipBehavior: Clip.hardEdge,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20)),

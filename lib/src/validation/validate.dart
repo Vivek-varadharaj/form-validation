@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:json_parcing/src/models/validation_model.dart';
 
 class Validate with ChangeNotifier {
   ValidationModel _firstName = ValidationModel(null, null);
@@ -55,9 +56,4 @@ class Validate with ChangeNotifier {
   }
 }
 
-class ValidationModel {
-  final String? value;
-  final String? error;
 
-  ValidationModel(this.value, this.error);
-}

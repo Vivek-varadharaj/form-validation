@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:json_parcing/src/database/user_model.dart';
+import 'package:json_parcing/src/models/user_model.dart';
 import 'package:json_parcing/src/database/user_model_provider.dart';
 
 import 'package:json_parcing/src/validation/validate.dart';
@@ -68,6 +68,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
                       children: [
                         Container(
                             height: 300,
+                            width: 300,
                             clipBehavior: Clip.hardEdge,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20)),
@@ -212,15 +213,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.black),
-                  onPressed: () {
-                    setState(() {
-                      editStatus = false;
-                    });
-                  },
-                  child: Text("Edit"),
-                ),
+               
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
