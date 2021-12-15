@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+
+
 import 'package:json_parcing/controllers/validate.dart';
 import 'package:json_parcing/model/user_model.dart';
 
@@ -21,6 +24,7 @@ class _MyAppState extends State<MyApp> {
   TextEditingController? _phone;
   TextEditingController? _email;
   UserModel? user;
+  final _formKey = GlobalKey<FormState>();
 
   bool editStatus = true;
 
@@ -43,6 +47,7 @@ class _MyAppState extends State<MyApp> {
     _name = TextEditingController();
     _email = TextEditingController();
     _phone = TextEditingController();
+    
   }
 
   @override
@@ -72,6 +77,7 @@ class _MyAppState extends State<MyApp> {
               padding:
                   const EdgeInsets.symmetric(horizontal: 18.0, vertical: 30),
               child: Form(
+                key:_formKey ,
                 child: Column(
                   children: [
                     Container(
@@ -104,6 +110,13 @@ class _MyAppState extends State<MyApp> {
                               width: 2.0,
                             ),
                           ),
+                           focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            borderSide: BorderSide(
+                              color: editStatus ? Colors.red : Colors.red,
+                              width: 2.0,
+                            ),
+                          ),
                         ),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
@@ -130,6 +143,13 @@ class _MyAppState extends State<MyApp> {
                             borderRadius: BorderRadius.circular(25.0),
                             borderSide: BorderSide(
                               color: editStatus ? Colors.black : Colors.blue,
+                              width: 2.0,
+                            ),
+                          ),
+                           focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            borderSide: BorderSide(
+                              color: editStatus ? Colors.red : Colors.red,
                               width: 2.0,
                             ),
                           ),
@@ -167,6 +187,13 @@ class _MyAppState extends State<MyApp> {
                               width: 2.0,
                             ),
                           ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            borderSide: BorderSide(
+                              color: editStatus ? Colors.red : Colors.red,
+                              width: 2.0,
+                            ),
+                          ),
                         ),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) {
@@ -196,7 +223,8 @@ class _MyAppState extends State<MyApp> {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(primary: Colors.black),
                   onPressed: () {
-                    setState(() {
+                    if(_formKey.currentState!.validate()){
+                        setState(() {
                       if (user!.mobile == _phone!.text &&
                           user!.name == _name!.text &&
                           user!.email == _email!.text) {
@@ -213,7 +241,9 @@ class _MyAppState extends State<MyApp> {
 
                       editStatus = true;
                     });
-                  },
+                  };
+                    },
+                    
                   child: Text("Save"),
                 ),
               ],
