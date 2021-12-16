@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:json_parcing/src/models/user_model.dart';
-import 'package:json_parcing/src/database/user_model_provider.dart';
+import 'package:json_parcing/src/controller/user_model_provider.dart';
 
 import 'package:json_parcing/src/validation/validate.dart';
 import 'package:provider/provider.dart';

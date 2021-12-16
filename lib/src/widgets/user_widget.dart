@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:json_parcing/src/models/user_model.dart';
-import 'package:json_parcing/src/database/user_model_provider.dart';
+import 'package:json_parcing/src/controller/user_model_provider.dart';
 import 'package:json_parcing/src/screens/edit_screen.dart';
 import 'package:provider/provider.dart';
 

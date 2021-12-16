@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:json_parcing/src/database/database_functions.dart';
+import 'package:json_parcing/src/controller/database_functions.dart';
 import 'package:json_parcing/src/models/user_model.dart';
 
 class UserModelProvider with ChangeNotifier{
