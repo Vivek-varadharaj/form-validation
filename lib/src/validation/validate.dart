@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:json_parcing/src/models/validation_model.dart';
+import 'package:json_parcing/src/controller/validation_model.dart';
+
 
 class Validate with ChangeNotifier {
   ValidationModel _firstName = ValidationModel(null, null);
   ValidationModel _phone = ValidationModel(null, null);
-  ValidationModel _email = ValidationModel(null, null);
+  ValidationModel _email = 
+  ValidationModel(null, null);
 
   ValidationModel get firstName => _firstName;
   ValidationModel get phone => _phone;

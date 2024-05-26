@@ -215,7 +215,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
               children: [
                
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.black),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                   onPressed: () {
                     
                     if (validateIt.isValidEntirely) {

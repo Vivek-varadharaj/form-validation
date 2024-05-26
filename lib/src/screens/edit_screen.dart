@@ -227,7 +227,7 @@ class _EditScreenState extends State<EditScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.black),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                   onPressed: () {
                     setState(() {
                       editStatus = false;
@@ -236,7 +236,7 @@ class _EditScreenState extends State<EditScreen> {
                   child: Text("Edit"),
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.black),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
                   onPressed: () {
                      validateIt.setEmail(_email!.text);
                      validateIt.setName(_name!.text);
